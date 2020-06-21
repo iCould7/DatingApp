@@ -17,17 +17,9 @@ export class MemberDetailComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.loadUser();
-  }
-
-  loadUser() {
-    /* tslint:disable:no-string-literal */
-    this.userService.getUser(this.route.snapshot.params['id']).subscribe((user: User) => {
-    /* tslint:enable:no-string-literal */
-      this.user = user;
-    }, error => {
-      this.alertify.error(error);
+    this.route.data.subscribe(data => {
+      const userKey = 'user';
+      this.user = data[userKey];
     });
   }
-
 }
