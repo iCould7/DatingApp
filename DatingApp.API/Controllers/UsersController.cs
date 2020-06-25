@@ -53,7 +53,7 @@ namespace DatingApp.API.Controllers
 
             _mapper.Map(userForUpdateDto, userFromRepo);
 
-            if(await _repo.SavedAll()){
+            if(await _repo.SaveAll()){
                 return NoContent();
             }
 
